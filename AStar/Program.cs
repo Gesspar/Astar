@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +29,8 @@ namespace AStar
                 item.Connect(grid.position);
             }
 
-            Node z = grid.position[0, 0];
-            Node q = grid.position[9, 9];
+            Node z = grid.position[3, 1];
+            Node q = grid.position[8, 5];
             z.Name = "Start";
             q.Name = "End";
 

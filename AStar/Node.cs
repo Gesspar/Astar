@@ -11,7 +11,7 @@ namespace AStar
         public string Name { get; set; }
         public int PositionX { get; set; }
         public int PositionY { get; set; }
-        public enum enumType {Grass,Wall,Tree}
+        public enum enumType { Grass, Wall, Tree }
         public string Type { get; set; }
 
         public int ValF { get; set; }
@@ -22,8 +22,9 @@ namespace AStar
         public List<Node> Connections { get; set; }
         public Node Parent { get; set; }
 
-        public Node(string name,int posX,int posY)
+        public Node(string name, int posX, int posY)
         {
+            IsTraversable = true;
             PositionX = posX;
             PositionY = posY;
             Name = name;
@@ -34,7 +35,7 @@ namespace AStar
             switch (Name)
             {
                 case "Start":
-                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.BackgroundColor = ConsoleColor.Green;
                     break;
                 case "End":
                     Console.BackgroundColor = ConsoleColor.Magenta;
@@ -43,31 +44,35 @@ namespace AStar
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
             }
+            if (isSelected)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            }
+            else { Console.ForegroundColor = ConsoleColor.Gray; }
 
             Console.Write("[E]");
         }
 
         public void Connect(Node[,] grid)
         {
-            Connections = new List<Node>(8);
+            Connections = new List<Node>();
 
-            try
+            for (int i = PositionY - 1; i < PositionY + 2; i++)
             {
-                for (int i = PositionY - 1; i < PositionY +1; i++)
+                for (int k = PositionX - 1; k < PositionX + 2; k++)
                 {
-                    for (int k = PositionX - 1; k < PositionX +1; k++)
+                    try
                     {
-                        if (i != 0 && k != 0 && grid[i, k] != null && IsTraversable)
+                        if (i != 0 && k != 0 && IsTraversable)
                         {
-                            Connections[i] = (grid[i, k]);
+                            Connections.Add(grid[i, k]);
                         }
+                    }
+                    catch {
                     }
                 }
             }
-            catch(Exception E)
-            { 
-                //Console.Write(E); 
-            }
+
 
             for (int i = 0; i < Connections.Count; i++)
             {
@@ -75,12 +80,12 @@ namespace AStar
                 {
                     Connections[i].ValG = 14;
                 }
-                else if(Connections[i] != null)
+                else if (Connections[i] != null)
                 {
                     Connections[i].ValG = 10;
                 }
-            } 
-            
+            }
+
         }
 
     }
