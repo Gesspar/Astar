@@ -50,7 +50,7 @@ namespace AStar
             }
             else { Console.ForegroundColor = ConsoleColor.Gray; }
 
-            Console.Write("[E]");
+            Console.Write(" "+ValG+" ");
         }
 
         public void Connect(Node[,] grid)
