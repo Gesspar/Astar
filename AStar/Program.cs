@@ -24,10 +24,10 @@ namespace AStar
                     grid.position[i,j] = new Node("["+i+","+j+"]",i,j);
                 }
             }
-            foreach (Node item in grid.position)
+            /*foreach (Node item in grid.position)
             {
                 item.Connect(grid.position);
-            }
+            }*/
 
             Node z = grid.position[0, 0];
             Node q = grid.position[9, 9];
