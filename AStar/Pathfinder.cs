@@ -85,6 +85,7 @@ namespace AStar
                     q++;
                 }
                 Console.ReadKey();
+                Console.WriteLine("Press anykey to continue to next step of the A* Loop.");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Clear();
 
