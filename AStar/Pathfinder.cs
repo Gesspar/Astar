@@ -24,7 +24,7 @@ namespace AStar
             while (openList != null)
             {
                 current = SmallestNumber(openList);
-
+                current.ValF = current.ValH + current.ValG;
                 //Console.WriteLine("Connect");
 
                 if (current == end)
@@ -84,7 +84,7 @@ namespace AStar
                     item.Draw(current == item);
                     q++;
                 }
-                Console.WriteLine("Press anykey to continue to next step of the A* Loop.");
+                Console.WriteLine("\nPress anykey to continue to next step of the A* Loop.");
                 Console.ReadKey();
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Clear();

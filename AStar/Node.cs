@@ -32,6 +32,7 @@ namespace AStar
 
         public void Draw(bool isSelected)
         {
+            
             switch (Name)
             {
                 case "Start":
@@ -50,7 +51,7 @@ namespace AStar
             }
             else { Console.ForegroundColor = ConsoleColor.Gray; }
 
-            Console.Write(" "+ValG+" ");
+            Console.Write(" G ");
         }
 
         public void Connect(Node[,] grid)
